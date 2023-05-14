@@ -42,10 +42,11 @@ jobs:
       id: upload_and_scan
       with:
         appname: 'VeraDemo-DotNet-GitHub'
-        createprofile: false
+        createprofile: true
         version: '${{ github.run_id }}'
-        criticality: Medium
-        filepath: 'VeraDemo-DotNet-App-Artifact.zip'
+        criticality: High
+        filepath: 'Verademo-dotnet.zip'
         vid: '${{ secrets.VERACODE_API_ID }}'
         vkey: '${{ secrets.VERACODE_API_KEY }}'
+        teams: 'ClintPollock-DemoApps2023'
       continue-on-error: true
