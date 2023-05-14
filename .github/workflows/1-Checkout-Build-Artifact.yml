@@ -40,7 +40,9 @@ jobs:
        
     - name: Submit to Veracode
       run: >
-         VeracodeC#API -vid ${{ secrets.VERACODE_API_ID }} -vkey ${{ secrets.VERACODE_API_KEY }}
+         VeracodeC#API.exe
+         -vid ${{ secrets.VERACODE_API_ID }}
+         -vkey ${{ secrets.VERACODE_API_KEY }}
          -action uploadandscan
          -appname VeraDemo-DotNet-GitHub 
          -createprofile true
