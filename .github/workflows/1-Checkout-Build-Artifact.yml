@@ -15,11 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Submit to Veracode
-      run: |
-         curl -sSO https://tools.veracode.com/integrations/API-Wrappers/CSharp/bin/VeracodeCSharpAPI.zip
-         unzip VeracodeCSharpAPI.zip VeracodeC#API.exe
-
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1.1.3
     
@@ -41,21 +36,18 @@ jobs:
 #          iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1'))
 #          srcclr scan --allow-dirty
 
-    - name: Submit to Veracode
+    - name: Download Veracode
       run: |
          curl -sSO https://tools.veracode.com/integrations/API-Wrappers/CSharp/bin/VeracodeCSharpAPI.zip
          unzip VeracodeCSharpAPI.zip VeracodeC#API.exe
-
-    - name: Veracode Upload and Scan Action Step
-      uses: veracode/veracode-uploadandscan-action@master
-      id: upload_and_scan
-      with:
-        appname: 'VeraDemo-DotNet-GitHub'
-        createprofile: true
-        version: '${{ github.run_id }}'
-        criticality: High
-        filepath: 'Verademo-dotnet.zip'
-        vid: '${{ secrets.VERACODE_API_ID }}'
-        vkey: '${{ secrets.VERACODE_API_KEY }}'
-        teams: 'ClintPollock-DemoApps2023'
-      continue-on-error: true
+         
+    - name: Submit to Veracode
+      run: >
+         VeracodeC#API -vid ${{ secrets.VERACODE_API_ID }} -vkey ${{ secrets.VERACODE_API_KEY }}
+         -action uploadandscan
+         -appname VeraDemo-DotNet-GitHub 
+         -createprofile true
+         -version ${{ github.run_id }}
+         -filepath Verademo-dotnet.zip
+         -teams ClintPollock-DemoApps2023 
+         
