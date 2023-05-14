@@ -20,7 +20,7 @@ jobs:
     
     - name: Run msbuild
       run: |
-          msbuild Verademo-dotnet.sln  
+          msbuild Verademo-dotnet.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="./"
       
     - name: List folder contents for visual of folder contents
       run: |
