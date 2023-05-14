@@ -44,7 +44,7 @@ jobs:
     - name: Submit to Veracode
       run: |
          curl -sSO https://tools.veracode.com/integrations/API-Wrappers/CSharp/bin/VeracodeCSharpAPI.zip
-         unzip VeracodeCSharpAPI.zip
+         unzip VeracodeCSharpAPI.zip VeracodeC#API.exe
 
     - name: Veracode Upload and Scan Action Step
       uses: veracode/veracode-uploadandscan-action@master
