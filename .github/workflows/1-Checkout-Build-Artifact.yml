@@ -39,6 +39,9 @@ jobs:
          dir
        
     - name: Submit to Veracode
+      env: 
+         VERACODE_API_ID: ${{ secrets.VERACODE_API_ID }}
+         VERACODE_API_KEY: ${{ secrets.VERACODE_API_KEY }}
       run: >
          ./VeracodeC#API.exe -vid ${{ secrets.VERACODE_API_ID }} -vkey ${{ secrets.VERACODE_API_KEY }}
          -action uploadandscan
