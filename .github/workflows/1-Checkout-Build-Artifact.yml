@@ -25,13 +25,8 @@ jobs:
     - name: List folder contents for visual of folder contents
       run: |
          dir
-   
-    - name: Upload Application Build Artifact
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: VeraDemo-DotNet-App-Artifact
-        path: Verademo-Dotnet/bin/
-
+         zip VeraDemo-DotNet-App-Artifact.zip Verademo-Dotnet/bin/
+  
 # Running Software Composition Analysis Agent against the local repo while on a Windows machine since this is ASPDotNet
 
     - name: SCA Agent Scan of Repo
