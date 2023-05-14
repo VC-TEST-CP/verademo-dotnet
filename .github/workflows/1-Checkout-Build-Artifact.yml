@@ -22,10 +22,6 @@ jobs:
       run: |
           msbuild Verademo-dotnet.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="../"
       
-    - name: List folder contents for visual of folder contents
-      run: |
-         dir
-  
 # Running Software Composition Analysis Agent against the local repo while on a Windows machine since this is ASPDotNet
 
 #    - name: SCA Agent Scan of Repo
@@ -40,7 +36,8 @@ jobs:
       run: |
          curl -sSO https://tools.veracode.com/integrations/API-Wrappers/CSharp/bin/VeracodeCSharpAPI.zip
          unzip VeracodeCSharpAPI.zip VeracodeC#API.exe
-         
+         dir
+       
     - name: Submit to Veracode
       run: >
          VeracodeC#API -vid ${{ secrets.VERACODE_API_ID }} -vkey ${{ secrets.VERACODE_API_KEY }}
