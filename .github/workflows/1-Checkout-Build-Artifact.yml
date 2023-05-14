@@ -25,7 +25,6 @@ jobs:
     - name: List folder contents for visual of folder contents
       run: |
          dir
-         zip VeraDemo-DotNet-App-Artifact.zip Verademo-Dotnet/bin/
   
 # Running Software Composition Analysis Agent against the local repo while on a Windows machine since this is ASPDotNet
 
