@@ -18,7 +18,7 @@ jobs:
     - name: Submit to Veracode
       run: |
          curl -sSO https://tools.veracode.com/integrations/API-Wrappers/CSharp/bin/VeracodeCSharpAPI.zip
-         unzip VeracodeCSharpAPI.zip
+         unzip VeracodeCSharpAPI.zip VeracodeC#API.exe
 
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1.1.3
